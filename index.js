@@ -27,7 +27,7 @@ app.post('/run-query', (req, res) => {
         if (err) return console.log(err);
         
         console.log(conn)
-        conn.query(JSON.stringify(dbQuery), function (err, data) {
+        conn.query(dbQuery, function (err, data) {
           if (err) {
               console.log(err);
               res.status(400).send(err);
