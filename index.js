@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const ibmdb = require('ibm_db');
-const connStr = "DATABASE=<dbname>;HOSTNAME=<myhost>;UID=db2user;PWD=password;PORT=<dbport>;PROTOCOL=TCPIP";
+const connStr = process.env.cns || "DATABASE=<dbname>;HOSTNAME=<myhost>;UID=db2user;PWD=password;PORT=<dbport>;PROTOCOL=TCPIP";
  
 const app = express();
 
@@ -21,24 +21,20 @@ app.get('/health-check', (req, res) => {
 app.post('/run-query', (req, res) => {
     console.log('run query is called');
     const dbQuery = req.body.dbQuery;
-    // TBD
-})
 
-
-
-ibmdb.open(connStr, function (err,conn) {
-  if (err) return console.log(err);
-  
-  console.log(conn)
-  conn.query('select * from sysibm.sysattributes', function (err, data) {
-    if (err) console.log(err);
-    else console.log(data);
- 
-    conn.close(function () {
-      console.log('done');
-    });
-  });
+    ibmdb.open(connStr, function (err,conn) {
+        if (err) return console.log(err);
+        
+        console.log(conn)
+        conn.query(JSON.stringify(dbQuery), function (err, data) {
+          if (err) console.log(err);
+          else console.log(data);
+       
+          conn.close(function () {
+            console.log('done');
+          });
+        });
+      });
 });
 
 app.listen(PORT, () => console.log(`Server is runnit at PORT ${PORT}`));
-
