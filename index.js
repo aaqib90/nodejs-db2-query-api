@@ -45,5 +45,5 @@ app.post('/run-query', (req, res) => {
 });
 
 app.listen(port, ip);
-console.log(`Server is runnit at PORT ${PORT}`);
+console.log(`Server is runnit at PORT ${port}`);
 
