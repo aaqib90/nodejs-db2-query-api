@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const ibmdb = require('ibm_db');
-const connStr = process.env.cns || "DATABASE=<dbname>;HOSTNAME=<myhost>;UID=db2user;PWD=password;PORT=<dbport>;PROTOCOL=TCPIP";
+const connStr = process.env.cns || "DATABASE=BLUDB;HOSTNAME=172.21.168.59;UID=db2inst1;PWD=P@ssw0rd;PORT=50000;PROTOCOL=TCPIP";
  
 const app = express();
 
