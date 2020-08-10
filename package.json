@@ -1,0 +1,23 @@
+{
+  "name": "nodejs-db2-query-api",
+  "version": "1.0.0",
+  "description": "Nodejs api to run DB2 query",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaqib90/nodejs-db2-query-api.git"
+  },
+  "author": "Md Aaqib Jawed",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aaqib90/nodejs-db2-query-api/issues"
+  },
+  "homepage": "https://github.com/aaqib90/nodejs-db2-query-api#readme",
+  "dependencies": {
+    "ibm_db": "^2.6.4"
+  }
+}
