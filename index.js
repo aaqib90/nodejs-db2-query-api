@@ -6,7 +6,8 @@ const connStr = process.env.cns || "DATABASE=BLUDB;HOSTNAME=172.21.168.59;UID=db
  
 const app = express();
 
-const PORT = process.env.PORT || 8888;
+const port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
+const ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 
 app.use(bodyParser.json());
 
@@ -33,7 +34,7 @@ app.post('/run-query', (req, res) => {
               res.status(400).send(err);
           }
           else {
-            console.log(data);
+            //console.log(data);
             res.send(data);
           }
           conn.close(function () {
@@ -43,4 +44,6 @@ app.post('/run-query', (req, res) => {
       });
 });
 
-app.listen(PORT, () => console.log(`Server is runnit at PORT ${PORT}`));
+app.listen(port, ip);
+console.log(`Server is runnit at PORT ${PORT}`);
+

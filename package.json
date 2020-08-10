@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/aaqib90/nodejs-db2-query-api#readme",
   "dependencies": {
-    "ibm_db": "^2.6.4"
+    "ibm_db": "^2.7.0"
   }
 }
